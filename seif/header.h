@@ -85,6 +85,7 @@ void buzzer_beep(int ms);
 void buzzer_alarm(int durata_ms);
 
 //SENZOR
+
 void ldr_init();
 uint16_t ldr_read();
 bool ldr_lumina_detectata();
