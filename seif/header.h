@@ -12,6 +12,7 @@
 #include <hardware/dma.h>
 #include <hardware/irq.h>
 
+
 // PINI LCD
 #define LCD_SPI      spi0
 #define LCD_CLK      2
@@ -91,6 +92,7 @@ bool ldr_lumina_detectata();
 //TASTATURA
 void keypad_init();
 char keypad_scan();
+void keypad_low_handler(uint gpio, uint32_t events);
 
 #endif
 
