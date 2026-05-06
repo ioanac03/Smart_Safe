@@ -34,8 +34,14 @@ project(seif C CXX ASM)
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
-
-add_executable(seif seif.c )
+add_executable(seif
+    seif.c
+    lcd.c
+    servo.c
+    buzzer.c
+    senzor.c
+    tastatura.c
+)
 
 pico_set_program_name(seif "seif")
 pico_set_program_version(seif "0.1")
@@ -54,13 +60,13 @@ target_include_directories(seif PRIVATE
 )
 
 # Add any user requested libraries
-target_link_libraries(seif 
-        pico_stdlib
-        hardware_pwm
-        hardware_spi
-        hardware_adc
-        hardware_dma
-        )
 
-pico_add_extra_outputs(seif)
+target_link_libraries(seif
+    pico_stdlib
+    hardware_spi
+    hardware_pwm
+    hardware_adc
+    hardware_dma
+    hardware_irq
+)
 
