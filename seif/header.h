@@ -45,20 +45,22 @@
 #define ORANGE  0xFD20
 
 //PRAGURI SI CONSTANTE
-#define LDR_THRESHOLD  2000
+#define LDR_THRESHOLD  100
 #define MAX_ATTEMPTS   3
 #define LOCKOUT_SEC    30
 
 extern volatile bool alarma_ldr;
+extern volatile bool alarma_activa;
+extern volatile bool seif_deschis_flag;
 extern volatile bool tasta_apasata;
 extern volatile char ultima_tasta;
-extern bool seif_deschis;
 extern int  incercari;
 
 extern const uint row_pins[ROWS];
 extern const uint col_pins[COLS];
 extern const char keymap[ROWS][COLS];
 extern const char PAROLA[];
+extern const char PAROLA_ALARMA[];
 
 //LCD
 
@@ -83,6 +85,8 @@ void servo_inchide();
 void buzzer_init();
 void buzzer_beep(int ms);
 void buzzer_alarm(int durata_ms);
+void alarma_start();
+void alarma_stop();
 
 //SENZOR
 

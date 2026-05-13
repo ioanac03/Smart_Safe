@@ -1,10 +1,39 @@
 #include "header.h"
 
-volatile bool alarma_ldr = false;
-
 #define DMA_SAMPLES 8
+
 static uint16_t adc_buf[DMA_SAMPLES];
 static int dma_chan = -1;
+volatile bool alarma_ldr = false;
+volatile bool alarma_activa = false;
+
+static struct repeating_timer alarm_timer;
+static bool timer_pornit = false;
+
+static bool alarm_timer_callback(struct repeating_timer *t) {
+    if (!alarma_activa) {
+        gpio_put(BUZZER_PIN, 0);
+        return false;           
+    }
+    static bool buzzer_state = false;
+    buzzer_state = !buzzer_state;
+    gpio_put(BUZZER_PIN, buzzer_state ? 1 : 0);
+    return true;                
+}
+
+void alarma_start() {
+    if (timer_pornit) return;
+    alarma_activa = true;
+    timer_pornit  = true;
+    add_repeating_timer_ms(-500, alarm_timer_callback, NULL, &alarm_timer);
+}
+
+void alarma_stop() {
+    alarma_activa = false;
+    timer_pornit  = false;
+    cancel_repeating_timer(&alarm_timer);
+    gpio_put(BUZZER_PIN, 0);    
+}
 
 void dma_irq_handler(){
     if(dma_channel_get_irq0_status(dma_chan)){
@@ -69,6 +98,5 @@ uint16_t ldr_read(){
 
 bool ldr_lumina_detectata(){
     uint16_t val = ldr_read();
-    printf("LDR ADC: %d\n", val);
     return val > LDR_THRESHOLD;
 }

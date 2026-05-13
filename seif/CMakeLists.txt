@@ -68,5 +68,7 @@ target_link_libraries(seif
     hardware_adc
     hardware_dma
     hardware_irq
+    hardware_timer
 )
 
+pico_add_extra_outputs(seif)
