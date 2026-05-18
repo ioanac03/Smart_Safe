@@ -15,5 +15,23 @@ static void servo_set_angle(int angle){
     pwm_set_chan_level(slice, channel, pulse);
 }
 
-void servo_deschide() { servo_set_angle(90); }
-void servo_inchide()  { servo_set_angle(0);  }
+static void servo_set_angle_slow(int target_angle, int delay_ms){
+    static int current_angle = 0;
+
+    if(current_angle < target_angle){
+        for(int a = current_angle; a <= target_angle; a++){
+            servo_set_angle(a);
+            sleep_ms(delay_ms);
+        }
+    } else {
+        for(int a = current_angle; a >= target_angle; a--){
+            servo_set_angle(a);
+            sleep_ms(delay_ms);
+        }
+    }
+    current_angle = target_angle;
+}
+
+
+void servo_deschide() { servo_set_angle_slow(230, 10); }
+void servo_inchide()  { servo_set_angle_slow(0, 10);  }

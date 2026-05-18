@@ -12,7 +12,6 @@
 #include <hardware/dma.h>
 #include <hardware/irq.h>
 
-
 // PINI LCD
 #define LCD_SPI      spi0
 #define LCD_CLK      2
@@ -45,7 +44,7 @@
 #define ORANGE  0xFD20
 
 //PRAGURI SI CONSTANTE
-#define LDR_THRESHOLD  100
+#define LDR_THRESHOLD  60
 #define MAX_ATTEMPTS   3
 #define LOCKOUT_SEC    30
 
@@ -60,7 +59,6 @@ extern const uint row_pins[ROWS];
 extern const uint col_pins[COLS];
 extern const char keymap[ROWS][COLS];
 extern const char PAROLA[];
-extern const char PAROLA_ALARMA[];
 
 //LCD
 
@@ -80,13 +78,13 @@ void lcd_show_lockout(int sec_ramase);
 void servo_init();
 void servo_deschide();
 void servo_inchide();
+void alarma_start();
+void alarma_stop();
+
 
 //BUZZER
 void buzzer_init();
 void buzzer_beep(int ms);
-void buzzer_alarm(int durata_ms);
-void alarma_start();
-void alarma_stop();
 
 //SENZOR
 

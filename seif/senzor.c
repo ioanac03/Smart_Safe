@@ -98,5 +98,6 @@ uint16_t ldr_read(){
 
 bool ldr_lumina_detectata(){
     uint16_t val = ldr_read();
+    printf("LDR value: %d\n", val);
     return val > LDR_THRESHOLD;
 }
