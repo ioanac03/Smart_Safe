@@ -1,36 +1,59 @@
-# proiect_soricarii_test
+# Implementarea unui Seif Inteligent cu Raspberry Pi Pico W
 
-Seif Inteligent
+Bunurile personale și securitatea lor reprezintă, pentru orice persoană, o grijă. Din acest motiv, dezvoltarea unor sisteme de securitate stabile cu o interfață intuitivă oricărui utilizator este necesară.
 
-Descriere: 
-  -realizarea unui seif inteligent bazat pe un microcontroler Raspberry Pi Pico.
+În cadrul acestui proiect este dezvoltat un sistem hardware complex îmbinat cu un software stabil, prin care se va realiza o implementare demonstrativă a unui **Seif Inteligent** cu autentificare PIN, mecanism servo și sistem de alarmă.
 
-  -seiful se deblocheaza prin introducerea unui cod PIN, folosind un modul cu butoane.
+---
 
-  -starea sistemului afisata pe un ecran LCD.
+## Cuprins
+
+1. [Context](#1-context)
+2. [Cerințe](#2-cerinte)
+    -[Cerințe Funcționale](#21-cerinte-functionale)
+    -[Cerințe Non-Funcționale](#22-cerinte-non-functionale)
+3. [Arhitectură](#3-arhitectură)
+    -[Definire Arhitectură](#31-definire-arhitectura)
+
+# 1. Context
+
+Implementarea unui **sistem de securitate fizică** inovator (seif inteligent) pentru a demosntra integrarea componentelor hardware și software într-un dispozitiv embedded funcțional. Sistemul combină autentificarea prin cod PIN, feedback vizual pe ecran LCD, acționare mecanică prin servomotor și detecție de efracție prin senzor de lumină.
+
+Proiectul ilustrează concepte fundamentale de sisteme embedded:
+
+  -seiful se deblochează prin introducerea unui cod PIN, folosind un modul cu butoane.
+
+  -starea sistemului afișată pe un ecran LCD.
 
   -mecanismul de deschidere realizat prin un servo motor.
 
-  -un buzzer pentru semnalizarea tentativelor de acces neautorizat la introducerea repetata a unor coduri gresite.
+  -un buzzer pentru semnalizarea tentativelor de acces neautorizat la introducerea repetată a unor coduri greșite.
 
-  -un senzor de lumina in interior care, daca starea seifului este de "incuiat" si detecteaza lumina, declanseaza o alarma.
+  -un senzor de lumină în interior care, dacă starea seifului este de "încuiat" și detectează lumină, declanșează o alarmă.
   
-Cerinte functionale:
-  -autentificare si control acces: utilizatorul introduce un cod PIN format din cateva cifre folosind butoanele hardware. Sistemul verifica acest cod cu parola, iar daca datele corespund, servo motorul descuie seiful.
+# 2. Cerințe
 
-  -interfata cu utilizatorul: pe ecranul LCD sunt afisate mesaje clare de stare, cum ar fi solicitarea introducerii PIN-ului, confirmarea deblocarii, notificarea unui PIN gresit sau mesaje de alarma.
+## 2.1. Cerințe funcționale
 
-  -securitate anti-brute-force: pentru a preveni ghicirea parolei, sistemul numara de cate ori este introdus un cod gresit. Dupa cateva incercari consecutive esuate, buzzer-ul emite o alarma pentru a semnala o activitate suspecta.
+  **a. autentificare și control acces: utilizatorul introduce un cod PIN format din câteva cifre folosind butoanele hardware. Sistemul verifică acest cod cu parola, iar dacă datele corespund, servo motorul descuie seiful.
 
-Cerinte non-functionale:
-  -performata si timp de raspuns: interfata trebuie sa reactioneze rapid, fara intarzieri vizibile intre apasarea butoanelor si afisare pe ecran. De asemenea, reactia sistemului la efractie trebuie sa fie prompta, declansand alarma imediat dupa expunerea senzorului la lumina.
+  **b. interfața cu utilizatorul: pe ecranul LCD sunt afisate mesaje clare de stare, cum ar fi solicitarea introducerii PIN-ului, confirmarea deblocarii, notificarea unui PIN greșit sau mesaje de alarmă.
 
-  -salvarea datelor: codul PIN este definit la compilare si stocat in memoria Flash read-only a microcontrolerului. PIN-ul nu poate fi modificat de utilizator fara a recompila si a reincarca firmware-ul pe dispozitiv. 
+  **c. securitate anti-brute-force: pentru a preveni ghicirea parolei, sistemul numără de cate ori este introdus un cod greșit. Dupa 3 incercari consecutive eșuate, buzzer-ul emite o alarmă pentru a semnala o activitate suspectă.
+
+## 2.2. Cerințe non-funcționale:
+
+  **a. performață și timp de raspuns: interfața trebuie să reacționeze rapid, fără întârzieri vizibile între apăsarea butoanelor și afișare pe ecran. De asemenea, reacția sistemului la efracție trebuie să fie promptă, declanșând alarma imediat dupa expunerea senzorului la lumină.
+
+  **b. salvarea datelor: codul PIN este definit la compilare și stocat în memoria Flash read-only a microcontrolerului. PIN-ul nu poate fi modificat de utilizator fără a recompila și a reîncărca firmware-ul pe dispozitiv. 
   
-  -alimentare si consum: sistemul este proiectat sa funtioneze la o tensiune standard, putand fi alimentat printr-un cablu USB sau folosind baterii.
+  -alimentare și consum: sistemul este proiectat să funționeze la o tensiune standard, putand fi alimentat printr-un cablu USB.
 
+---
+# 3. Arhitectură
 
-DEFINIRE ARHITECTURA SISTEM:
+## 3.1. Definire arhitectură
+
 ![Schita arhitectura sistem](images/schita_arhitectura.jpeg)
 1. Tastatura (Keypad)
 Este interfața principală de input pentru utilizator.

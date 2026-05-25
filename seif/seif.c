@@ -66,12 +66,12 @@ int main() {
                     lcd_show_ok();                 
                     buzzer_beep(100); 
                     sleep_ms(50); 
-                    buzzer_beep(100);                    
-                    servo_deschide();    
                     if (alarma_ldr) {
                         alarma_stop();
                         alarma_ldr = false;
                     }
+                    buzzer_beep(100);                    
+                    servo_deschide();    
                     seif_deschis = true;                
                 } else {   
                     //pt brute-force                 
