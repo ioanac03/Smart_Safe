@@ -8,12 +8,18 @@ Bunurile personale și securitatea lor reprezintă, pentru orice persoană, o gr
 
 ## Cuprins
 
-1. [Context](#1-context)
-2. [Cerințe](#2-cerinte)
-    -[Cerințe Funcționale](#21-cerinte-functionale)
-    -[Cerințe Non-Funcționale](#22-cerinte-non-functionale)
-3. [Arhitectură](#3-arhitectură)
-    -[Definire Arhitectură](#31-definire-arhitectura)
+1. [Context](#context)
+2. [Cerințe](#cerinte)
+
+    -[Cerințe Funcționale](#cerinte-functionale)
+
+    -[Cerințe Non-Funcționale](#cerinte-non-functionale)
+
+3. [Arhitectură](#arhitectură)
+
+    -[Definire Arhitectură](#definire-arhitectura)
+
+<a id="context"></a>
 
 # 1. Context
 
@@ -31,26 +37,37 @@ Proiectul ilustrează concepte fundamentale de sisteme embedded:
 
   -un senzor de lumină în interior care, dacă starea seifului este de "încuiat" și detectează lumină, declanșează o alarmă.
   
+<a id="cerinte"></a>
+
 # 2. Cerințe
+
+<a id="cerinte-functionale"></a>
 
 ## 2.1. Cerințe funcționale
 
-  **a. autentificare și control acces: utilizatorul introduce un cod PIN format din câteva cifre folosind butoanele hardware. Sistemul verifică acest cod cu parola, iar dacă datele corespund, servo motorul descuie seiful.
+  * a. autentificare și control acces: utilizatorul introduce un cod PIN format din câteva cifre folosind butoanele hardware. Sistemul verifică acest cod cu parola, iar dacă datele corespund, servo motorul descuie seiful.
 
-  **b. interfața cu utilizatorul: pe ecranul LCD sunt afisate mesaje clare de stare, cum ar fi solicitarea introducerii PIN-ului, confirmarea deblocarii, notificarea unui PIN greșit sau mesaje de alarmă.
+  * b. interfața cu utilizatorul: pe ecranul LCD sunt afisate mesaje clare de stare, cum ar fi solicitarea introducerii PIN-ului, confirmarea deblocarii, notificarea unui PIN greșit sau mesaje de alarmă.
 
-  **c. securitate anti-brute-force: pentru a preveni ghicirea parolei, sistemul numără de cate ori este introdus un cod greșit. Dupa 3 incercari consecutive eșuate, buzzer-ul emite o alarmă pentru a semnala o activitate suspectă.
+  * c. securitate anti-brute-force: pentru a preveni ghicirea parolei, sistemul numără de cate ori este introdus un cod greșit. Dupa 3 incercari consecutive eșuate, buzzer-ul emite o alarmă pentru a semnala o activitate suspectă.
+
+<a id="cerinte-non-functionale"></a>
 
 ## 2.2. Cerințe non-funcționale:
 
-  **a. performață și timp de raspuns: interfața trebuie să reacționeze rapid, fără întârzieri vizibile între apăsarea butoanelor și afișare pe ecran. De asemenea, reacția sistemului la efracție trebuie să fie promptă, declanșând alarma imediat dupa expunerea senzorului la lumină.
+  * a. performață și timp de raspuns: interfața trebuie să reacționeze rapid, fără întârzieri vizibile între apăsarea butoanelor și afișare pe ecran. De asemenea, reacția sistemului la efracție trebuie să fie promptă, declanșând alarma imediat dupa expunerea senzorului la lumină.
 
-  **b. salvarea datelor: codul PIN este definit la compilare și stocat în memoria Flash read-only a microcontrolerului. PIN-ul nu poate fi modificat de utilizator fără a recompila și a reîncărca firmware-ul pe dispozitiv. 
+  * b. salvarea datelor: codul PIN este definit la compilare și stocat în memoria Flash read-only a microcontrolerului. PIN-ul nu poate fi modificat de utilizator fără a recompila și a reîncărca firmware-ul pe dispozitiv. 
   
-  -alimentare și consum: sistemul este proiectat să funționeze la o tensiune standard, putand fi alimentat printr-un cablu USB.
+  * c. alimentare și consum: sistemul este proiectat să funționeze la o tensiune standard, putand fi alimentat printr-un cablu USB.
 
 ---
+
+<a id="arhitectura"></a>
+
 # 3. Arhitectură
+
+<a id="definire-arhitectura"></a>
 
 ## 3.1. Definire arhitectură
 
