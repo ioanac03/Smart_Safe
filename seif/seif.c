@@ -38,6 +38,7 @@ int main() {
     int idx           = 0;
     int incercari     = 0;
     bool seif_deschis = false;
+    int closed = 0;
 
     while (true) { 
         if (!seif_deschis && ldr_lumina_detectata()) {            
@@ -45,7 +46,12 @@ int main() {
                 alarma_ldr = true;                
                 printf("ALARMA: lumina detectata in seif inchis!\n");                
                 lcd_show_alarm();
-                alarma_start();       
+                alarma_start();
+                if (closed == 0){
+                    servo_inchide();
+                    closed = 1;
+                }
+                       
             }
         } 
 
@@ -69,6 +75,7 @@ int main() {
                     if (alarma_ldr) {
                         alarma_stop();
                         alarma_ldr = false;
+                        closed = 0;
                     }
                     buzzer_beep(100);                    
                     servo_deschide();    
