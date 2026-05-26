@@ -183,7 +183,7 @@ Schema electrică a sistemului a fost realizată în KiCad și conține toate co
 
 * R2 - rezistența de divizor pentru fotorezistență
 
-![Schema electrică KiCad](images/schema_electrică.png)
+![Schema electrică KiCad](images/schema_electrica.png)
 
 Conexiuni principale conform schemei:
 
