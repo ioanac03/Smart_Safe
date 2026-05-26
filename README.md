@@ -13,16 +13,16 @@ Bunurile personale și securitatea lor reprezintă, pentru orice persoană, o gr
     -[Cerințe funcționale](#cerinte-functionale)<br>
     -[Cerințe non-funcționale](#cerinte-non-functionale)<br>
     -[Scenariu de testare](#scenariu-de-testare)
-3. [Componente](#componente)
+3. [Componente](#componente)<br>
     -[Schema bloc](#schema-bloc)<br>
     -[Descrierea componentelor](#descrierea-componentelor)<br>
-4. [Arhitectură](#arhitectura)
+4. [Arhitectură](#arhitectura)<br>
     -[Definire arhitectură](#definire-arhitectura)<br>
     -[Schema electrică](#schema-electrica)<br>
     -[Arhitectura Software](#arhitectura-software)
-5. [Scenarii și diagrame](#scenarii-diagrame)
+5. [Scenarii și diagrame](#scenarii-diagrame)<br>
     -[Diagrama use-case](#use-case)<br>
-    -[Scenariile de funcționare](#scenarii)
+    -[Scenariile de funcționare](#scenarii)<br>
     -[Diagrama de secvențe](#diagrama-secvente)
 6. [Etapele de realizare](#etape)
 7. [Bibliografie](#bibliografie)
